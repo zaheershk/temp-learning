@@ -1,102 +1,148 @@
 # Quiz CLI
 
-An interactive command-line quiz game for learning JavaScript, Node.js, and general programming concepts.
+> An interactive command-line quiz game for learning JavaScript and Node.js fundamentals.
 
-## Overview
+## 📖 Project Overview
 
-Quiz CLI is a simple terminal-based quiz application built with modern Node.js and ES Modules. It loads questions from a JSON file, lets users choose a category, and then walks them through a timed-free quiz experience with scoring and answer review.
+Quiz CLI is a terminal-based quiz application built with Node.js and ES modules. It loads categorized questions from a JSON file, prompts the player to choose a topic and question count, and then runs an interactive multiple-choice quiz with scoring, explanations, and review of incorrect answers.
 
-## Features
+This project is designed for learners who want a lightweight, dependency-free CLI experience for practicing programming concepts directly in the terminal.
 
-- Interactive command-line interface
-- Multiple quiz categories
-- Randomized question order
-- Score tracking and final results summary
-- Answer explanations for learning
-- Built with native Node.js modules only
+## ✨ Features
 
-## Tech Stack
+- Interactive command-line quiz experience
+- Category-based question selection
+- Choice of all questions, 3 questions, or 5 questions when available
+- Randomized question order using a Fisher-Yates shuffle
+- Colorized terminal output using ANSI escape codes
+- Progress indicator during the quiz
+- Score summary with performance feedback
+- Explanations shown after each question
+- Review of incorrect answers at the end
+- Replay loop so users can take the quiz again
+- No external npm dependencies
 
-- Node.js 18+
-- JavaScript (ES Modules)
-- Built-in `readline` module for terminal input
-- Built-in `fs/promises` for loading quiz data
+## 🛠️ Tech Stack
 
-## Project Structure
+| Layer | Technology |
+|-------|------------|
+| Runtime | Node.js >= 18 |
+| Language | JavaScript (ES Modules) |
+| CLI/Input | Built-in `node:readline` |
+| File I/O | Built-in `node:fs/promises` |
+| Path Handling | Built-in `node:path` and `node:url` |
+| Data Format | JSON |
+| Styling | ANSI escape codes |
+| Package Manager | npm |
+
+## 🗂️ Project Structure
 
 ```text
-quiz-cli/
-└── test-app/
-    ├── data/
-    │   └── questions.json
-    ├── index.js
-    ├── package.json
-    └── src/
-        ├── colors.js
-        ├── input.js
-        └── quiz.js
+README.md                         # Project documentation
+
+test-app/                         # Main quiz application
+├── package.json                  # Project metadata and npm scripts
+├── index.js                      # Application entry point
+├── data/
+│   └── questions.json            # Quiz questions and answer data
+└── src/
+    ├── colors.js                 # Terminal color helpers
+    ├── input.js                  # Readline-based user input helpers
+    └── quiz.js                   # Quiz logic, scoring, and results display
 ```
 
-## Setup
+## 🚀 Setup Instructions
 
-1. Install Node.js 18 or newer.
-2. Clone the repository.
-3. Navigate to the application directory:
+### Prerequisites
+
+- Node.js 18 or newer
+- npm
+
+### Installation
+
+The application has no external dependencies, so setup is minimal.
 
 ```bash
 cd test-app
-```
-
-4. Install dependencies:
-
-```bash
 npm install
 ```
 
-> The project currently uses only built-in Node.js modules, so no external packages are required.
+> `npm install` is not strictly required because the project does not declare any external packages, but running it will prepare the local `node_modules` folder if you want a standard Node.js workflow.
 
-## Usage
+### Configuration
 
-Run the quiz application with:
+| Variable | Required | Description |
+|----------|----------|-------------|
+| None detected | No | No environment variables are defined in the provided codebase. |
+
+Quiz content is stored in `test-app/data/questions.json`. To change the quiz, edit the category names, questions, answer indexes, or explanations in that file.
+
+## 💡 Usage Examples
+
+### Run the quiz
 
 ```bash
+cd test-app
 npm start
 ```
 
-You will be prompted to:
+This launches the interactive quiz in your terminal.
 
-1. Choose a quiz category
-2. Select how many questions to answer
-3. Respond to each question from the terminal
-4. Review your score and incorrect answers at the end
+### Expected flow
 
-## Tests
+```text
+1. Choose a category
+2. Choose how many questions to answer
+3. Answer multiple-choice prompts by entering a number
+4. View your score and explanations
+5. Choose whether to play again
+```
 
-A test script is available in `package.json`:
+### Run the application directly
 
 ```bash
+cd test-app
+node index.js
+```
+
+## 🧪 Running Tests
+
+The package manifest defines a test script:
+
+```bash
+cd test-app
 npm test
 ```
 
-At the moment, the project does not include automated test files, so this command may need future test coverage to be added.
+> ⚠️ Could not be determined from the codebase — no dedicated test files were provided in the captured repository content. If tests are added later, this command will run them via `node --test`.
 
-## Deployment
+## 📦 Deployment
 
-This application is designed to run locally in a terminal environment. To share or deploy it:
+This project is a local CLI application and does not include deployment infrastructure.
 
-- Publish the repository to GitHub
-- Ensure the target environment has Node.js 18+
-- Run the app from the `test-app` directory using `npm start`
+Recommended usage is to run it directly in a Node.js environment:
 
-## Contributing
+```bash
+cd test-app
+npm start
+```
 
-Contributions are welcome. A simple workflow is:
+> ⚠️ Could not be determined from the codebase — no Dockerfile, CI/CD workflow, or hosted deployment configuration was detected.
+
+## 🤝 Contributing
+
+Contributions can be made by extending the question bank, improving quiz flow, or adding tests.
+
+Suggested workflow:
 
 1. Create a feature branch
 2. Make your changes
-3. Test the application manually
-4. Open a pull request with a clear description of your changes
+3. Verify the quiz still runs with `npm start`
+4. Add or update tests if applicable
+5. Open a pull request
 
-## License
+If you add new quiz categories or behavior, keep the JSON structure in `data/questions.json` consistent with the existing question format.
+
+## 📄 License
 
 This project is licensed under the MIT License.
